@@ -1,0 +1,40 @@
+{
+  "Commands": [
+    {
+      "Verb": "Get",
+      "Noun": "UdkctlNamespace",
+      "OriginalName": ".\\binary\\kubectl\\kubectl.exe",
+      "OriginalCommandElements": [
+        "get",
+        "namespace",
+        "-ojson"
+      ],
+      "Platform": [
+        "Windows",
+        "Linux",
+        "MacOS"
+      ],
+      "Elevation": null,
+      "Aliases": [],
+      "DefaultParameterSetName": null,
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": null,
+      "SupportsTransactions": false,
+      "NoInvocation": false,
+      "Description": "Gets namespaces from current Kubernetes cluster.",
+      "Usage": null,
+      "Parameters": [],
+      "Examples": [],
+      "OriginalText": null,
+      "HelpLinks": null,
+      "OutputHandlers": [
+        {
+          "ParameterSetName": "Default",
+          "HandlerType": "Inline",
+          "Handler": "$args[0] | ConvertFrom-Json"
+        }
+      ]
+    }
+  ],
+  "$schema": "https://aka.ms/PowerShell/Crescendo/Schemas/2021-11"
+}
