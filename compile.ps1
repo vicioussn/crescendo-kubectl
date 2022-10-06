@@ -1,3 +1,5 @@
+Get-ChildItem ".\helpers" -Filter "*.ps1" -Recurse | %{. $_.FullName};
+
 
 [int]$patchVersion = Select-String -Path .\CrescendoKubectl.psd1 -Pattern "ModuleVersion = '0\.0\.(\d)'" | Select-Object @{name="version"; expression={$_.Matches.Groups[1].Value}} | select-object -ExpandProperty version;
 
@@ -14,5 +16,5 @@ Import-Module .\CrescendoKubectl.psd1;
 Get-Command -Module CrescendoKubectl;
 
 
-$a = Get-UdkctlNamespace
+$a = Get-UdkctlNamespace -Name dev
 $a

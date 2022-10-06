@@ -6,8 +6,8 @@
       "OriginalName": ".\\binary\\kubectl\\kubectl.exe",
       "OriginalCommandElements": [
         "get",
-        "namespace",
-        "-ojson"
+        "-ojson",
+        "namespace"
       ],
       "Platform": [
         "Windows",
@@ -23,15 +23,26 @@
       "NoInvocation": false,
       "Description": "Gets namespaces from current Kubernetes cluster.",
       "Usage": null,
-      "Parameters": [],
+      "Parameters": [
+        {
+          "OriginalName": null,
+          "Name": "Name",
+          "ParameterType": "string[]",
+          "ParameterSetName": [ "ByName" ],
+          "AdditionalParameterAttributes": [],
+          "Mandatory": false,
+          "NoGap": false,
+          "Description": "Namespace name."
+      }
+      ],
       "Examples": [],
       "OriginalText": null,
       "HelpLinks": null,
       "OutputHandlers": [
         {
           "ParameterSetName": "Default",
-          "HandlerType": "Inline",
-          "Handler": "$args[0] | ConvertFrom-Json | Select-Object -ExpandProperty items"
+          "HandlerType": "Function",
+          "Handler": "Get-UdkctlParsedResponse"
         }
       ]
     }

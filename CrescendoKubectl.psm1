@@ -9,6 +9,27 @@ class PowerShellCustomFunctionAttribute : System.Attribute {
     }
 }
 
+function Get-UdkctlParsedResponse {
+    [CmdletBinding()]
+    param (
+        # Parameter help description
+        [Parameter(Mandatory)]
+        [string[]]
+        $response
+    );
+    
+
+    $responseObject = $response | ConvertFrom-Json;
+
+    if ($responseObject.items)
+    {
+        return $responseObject.items;
+    }
+    else
+    {
+        return $responseObject;
+    }
+}
 
 
 function Get-UdkctlNamespace
@@ -16,12 +37,25 @@ function Get-UdkctlNamespace
 [PowerShellCustomFunctionAttribute(RequiresElevation=$False)]
 [CmdletBinding()]
 
-param(    )
+param(
+[Parameter(ParameterSetName='ByName')]
+[string[]]$Name
+    )
 
 BEGIN {
-    $__PARAMETERMAP = @{}
+    $__PARAMETERMAP = @{
+         Name = @{
+               OriginalName = ''
+               OriginalPosition = '0'
+               Position = '2147483647'
+               ParameterType = 'string[]'
+               ApplyToExecutable = $False
+               NoGap = $False
+               }
+    }
+
     $__outputHandlers = @{
-        Default = @{ StreamOutput = $False; Handler = { $args[0] | ConvertFrom-Json | Select-Object -ExpandProperty items } }
+        Default = @{ StreamOutput = $False; Handler = 'Get-UdkctlParsedResponse' }
     }
 }
 
@@ -33,8 +67,8 @@ PROCESS {
     $MyInvocation.MyCommand.Parameters.Values.Where({$_.SwitchParameter -and $_.Name -notmatch "Debug|Whatif|Confirm|Verbose" -and ! $__boundParameters[$_.Name]}).ForEach({$__boundParameters[$_.Name] = [switch]::new($false)})
     if ($__boundParameters["Debug"]){wait-debugger}
     $__commandArgs += 'get'
-    $__commandArgs += 'namespace'
     $__commandArgs += '-ojson'
+    $__commandArgs += 'namespace'
     foreach ($paramName in $__boundParameters.Keys|
             Where-Object {!$__PARAMETERMAP[$_].ApplyToExecutable}|
             Sort-Object {$__PARAMETERMAP[$_].OriginalPosition}) {
@@ -89,6 +123,11 @@ PROCESS {
 
 .DESCRIPTION
 Gets namespaces from current Kubernetes cluster.
+
+.PARAMETER Name
+Namespace name.
+
+
 
 #>
 }
