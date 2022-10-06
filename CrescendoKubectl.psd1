@@ -12,13 +12,13 @@
 RootModule = 'CrescendoKubectl.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.0.8'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
 
 # ID used to uniquely identify this module
-GUID = 'd0d1f6ed-cbfe-4970-82bd-cca6a3f5243b'
+GUID = '5e81febd-64ec-4c55-a349-7825d4056ce4'
 
 # Author of this module
 Author = 'Uladzislau_Dadzimau'
@@ -122,7 +122,7 @@ PrivateData = @{
 
 
     # CrescendoGenerated
-    CrescendoGenerated = '10/06/2022 12:25:49'
+    CrescendoGenerated = '10/06/2022 13:26:47'
 
     # CrescendoVersion
     CrescendoVersion = '1.0.0'

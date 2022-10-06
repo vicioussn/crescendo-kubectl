@@ -31,7 +31,7 @@
         {
           "ParameterSetName": "Default",
           "HandlerType": "Inline",
-          "Handler": "$args[0] | ConvertFrom-Json"
+          "Handler": "$args[0] | ConvertFrom-Json | Select-Object -ExpandProperty items"
         }
       ]
     }

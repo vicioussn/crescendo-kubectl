@@ -21,7 +21,7 @@ param(    )
 BEGIN {
     $__PARAMETERMAP = @{}
     $__outputHandlers = @{
-        Default = @{ StreamOutput = $False; Handler = { $args[0] | ConvertFrom-Json } }
+        Default = @{ StreamOutput = $False; Handler = { $args[0] | ConvertFrom-Json | Select-Object -ExpandProperty items } }
     }
 }
 
