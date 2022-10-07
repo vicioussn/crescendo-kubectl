@@ -42,6 +42,7 @@
         {
           "ParameterSetName": "Default",
           "HandlerType": "Function",
+          "StreamOutput": true,
           "Handler": "Get-UdkctlParsedResponse"
         }
       ]

@@ -2,8 +2,7 @@ function Get-UdkctlParsedResponse {
     [CmdletBinding()]
     param (
         # Parameter help description
-        [Parameter(Mandatory)]
-        [string[]]
+        [Parameter(Mandatory, ValueFromPipeline)]
         $response
     );
     

@@ -13,8 +13,7 @@ function Get-UdkctlParsedResponse {
     [CmdletBinding()]
     param (
         # Parameter help description
-        [Parameter(Mandatory)]
-        [string[]]
+        [Parameter(Mandatory, ValueFromPipeline)]
         $response
     );
     
@@ -55,7 +54,7 @@ BEGIN {
     }
 
     $__outputHandlers = @{
-        Default = @{ StreamOutput = $False; Handler = 'Get-UdkctlParsedResponse' }
+        Default = @{ StreamOutput = $True; Handler = 'Get-UdkctlParsedResponse' }
     }
 }
 

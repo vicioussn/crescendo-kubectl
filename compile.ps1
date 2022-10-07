@@ -11,7 +11,7 @@ $a = Get-Content -Path .\CrescendoKubectl.psd1 | %{$_ -replace "ModuleVersion = 
 $a | Out-File .\CrescendoKubectl.psd1 -Verbose;
 
 
-Remove-Module CrescendoKubectl -Force -Verbose;
+Remove-Module CrescendoKubectl -Force -Verbose -ErrorAction SilentlyContinue;
 Import-Module .\CrescendoKubectl.psd1;
 Get-Command -Module CrescendoKubectl;
 
